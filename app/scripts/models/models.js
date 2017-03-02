@@ -12,7 +12,7 @@ var Recipe = Backbone.Model.extend({
   defaults:{
     ingredients:[]
   },
-  id:'_id'
+  idAttribute:'objectId'
 });
 
 
@@ -21,5 +21,8 @@ var User = Backbone.Model.extend({
 });
 
 module.exports = {
+  Ingredient: Ingredient,
+  IngredientCollection:IngredientCollection,
+  Recipe:Recipe,
   User: User
 };

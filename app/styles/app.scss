@@ -2,6 +2,9 @@
 // Bootstrap Variables
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
+$header-gray : #CFCFCF;
+$sidebar-gray : #E6E6E6;
+
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
@@ -14,4 +17,19 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
 img {
   max-width: 100%;
+}
+
+// Header Styles
+.header{
+  background-color: $header-gray;
+}
+
+.option-panel {
+  display: inline-block;
+  float: right;
+}
+
+//SideBar Styles
+.sidebar {
+  background-color: $sidebar-gray;
 }

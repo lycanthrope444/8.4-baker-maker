@@ -30,7 +30,7 @@ class Header extends React.Component{
     return (
       <div className ="header">
         <span>The kitchen is yours, chef!</span>
-        <span>Batch Maker</span>
+        <span>Baker Maker</span>
         <OptionPanel />
       </div>
     )

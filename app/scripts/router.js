@@ -3,10 +3,14 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var login = require('./components/login.jsx').Login;
+var myRecipes = require('./components/myrecipes.jsx').MyRecipes;
 var Public = require('./components/demolink.jsx').Public;
 var demolinks = require('./components/demolink.jsx');
 
 var AppRouter = Backbone.Router.extend({
+  initialize:function(){
+    
+  },
   routes:{
     '':'login',
     'myrecipes':'myRecipes',
@@ -23,7 +27,7 @@ var AppRouter = Backbone.Router.extend({
   },
   myRecipes:function(){
     ReactDOM.render(
-      React.createElement(login),
+      React.createElement(myRecipes),
       document.getElementById('app')
     );
   },

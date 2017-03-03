@@ -20,16 +20,16 @@ var User = Backbone.Model.extend({
 
 });
 
-var milk = new Ingredient({name:'milk'});
-var bread = new Ingredient({name:'bread'});
-var eggs = new Ingredient({name:'eggs'});
+var milk = new Ingredient({name:'milk', qty: 1, measurement:'cup'});
+var bread = new Ingredient({name:'bread', qty: 1, measurement:'slice'});
+var eggs = new Ingredient({name:'eggs', qty: 1});
 
 var exampleIngredientCollection = new IngredientCollection();
 exampleIngredientCollection.add(milk);
 exampleIngredientCollection.add(bread);
 exampleIngredientCollection.add(eggs);
 
-var exampleRecipe = new Recipe({name: 'french toast', ingredients: exampleIngredientCollection});
+var exampleRecipe = new Recipe({name: 'french toast', servingSize: 4, ingredients: exampleIngredientCollection});
 
 module.exports = {
   Ingredient: Ingredient,

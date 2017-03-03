@@ -19,13 +19,18 @@ class Login extends React.Component{
   }
   handleUserLogin(e){
     console.log(e.target.value);
+    this.setState({user:e.target.value});
   }
   handlePasswordLogin(e){
     console.log(e.target.value);
+    this.setState({password:e.target.value});
   }
   loginUser(){
-    console.log('clicked');
-    Backbone.history.navigate('myrecipes', {trigger:true});
+    console.log('button clicked', this.state.user, this.state.password);
+    User.login(this.state, function(user){
+      Backbone.history.navigate('myrecipes', {trigger:true});
+    });
+    // Backbone.history.navigate('myrecipes', {trigger:true});
   }
   render(){
     return (

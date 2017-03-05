@@ -15,10 +15,14 @@ class MyRecipes extends React.Component{
     this.handleServings = this.handleServings.bind(this);
     this.selectRecipe = this.selectRecipe.bind(this);
 
+    //To store Ingredients for new recipes
+    var storageList = new models.IngredientCollection();
+
     this.state={
       recipeList: exampleRecipeCollection,
       recipe: exampleRecipe,
-      servingSize: serve
+      servingSize: serve,
+      storageList: storageList
     }
   }
   adjustRecipe(){
@@ -38,13 +42,14 @@ class MyRecipes extends React.Component{
     var list = $('.recipe-list');
     list.slideToggle();
   }
-  addRecipe(){
+  addRecipe(e){
+    e.preventDefault();
     console.log('triggered');
   }
   selectRecipe(item){
     console.log(this, item);
   }
-  addIngredient(){
+  addIngredient(ingredient){
 
   }
   render(){
@@ -62,7 +67,9 @@ class MyRecipes extends React.Component{
           servingSize = {this.state.servingSize}
         />
         <ToggleMode toggleMode={this.toggleMode}/>
-        <AddRecipe addRecipe={this.addRecipe}/>
+        <AddRecipe addRecipe={this.addRecipe}
+          addIngredient={this.addIngredient}
+        />
       </Container>
     )
   }
@@ -173,6 +180,9 @@ class ToggleMode extends React.Component{
 }
 
 class AddRecipe extends React.Component{
+  constructor(props){
+    super(props);
+  }
   render(){
     return(
       <div className="add-recipe">
@@ -185,17 +195,21 @@ class AddRecipe extends React.Component{
             <label htmlFor="ingredient">
               Ingredients
             </label>
-            <input className="form-control" placeholder="Ingredient Name" />
-
+            <input className="form-control" id="ingredient"
+              placeholder="Ingredient Name" />
             <button className="btn"
               onClick={
                 (e)=>{
                   e.preventDefault();
-              }
-            }>
+                  this.props.addIngredient();
+                }
+              }>
               Add Ingredient
             </button>
-            <button className="btn" onClick={this.props.addRecipe}>
+            <button className="btn"
+              onClick={
+                this.props.addRecipe
+              }>
               Finish Recipe
             </button>
           </div>

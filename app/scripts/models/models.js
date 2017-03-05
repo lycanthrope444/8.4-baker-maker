@@ -83,7 +83,7 @@ var anotherExampleIng = new IngredientCollection();
 anotherExampleIng.add(eggs);
 
 var exampleRecipe = new Recipe({name: 'french toast', servingSize: 4, ingredients: exampleIngredientCollection});
-var anotherExample = new Recipe({name: 'scrambled eggs', servingSize: 1, ingredient: anotherExampleIng});
+var anotherExample = new Recipe({name: 'scrambled eggs', servingSize: 1, ingredients: anotherExampleIng});
 
 var exampleRecipeCollection = new RecipeCollection();
 exampleRecipeCollection.add(exampleRecipe);

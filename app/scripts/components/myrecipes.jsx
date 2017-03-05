@@ -1,8 +1,10 @@
+var $ = require('jquery');
 var React = require('react');
 
 var Container = require('./layout.jsx').Container;
 var models = require('../models/models.js');
 var exampleRecipe = require('../models/models.js').exampleRecipe;
+var exampleRecipeCollection = require('../models/models.js').exampleRecipeCollection;
 
 class MyRecipes extends React.Component{
   constructor(props){
@@ -13,6 +15,7 @@ class MyRecipes extends React.Component{
     this.handleServings = this.handleServings.bind(this);
 
     this.state={
+      recipeList: exampleRecipeCollection,
       recipe: exampleRecipe,
       servingSize: serve
     }
@@ -24,16 +27,51 @@ class MyRecipes extends React.Component{
     e.preventDefault();
     this.setState({servingSize: e.target.value});
   }
+  toggleMode(){
+    var calc = $('.recipe-calculator').slideToggle();
+    var add = $('.add-recipe').slideToggle();
+  }
+  addRecipe(){
+    console.log('triggered');
+  }
   render(){
+    console.log(this.state);
     return(
       <Container>
+        <RecipeList recipeList={this.state.recipeList}/>
         <RecipeCalculator
           adjustRecipe={this.adjustRecipe}
           exampleRecipe={this.state.recipe}
           handleServings={this.handleServings}
           servingSize = {this.state.servingSize}
         />
+        <ToggleMode toggleMode={this.toggleMode}/>
+        <AddRecipe addRecipe={this.addRecipe}/>
       </Container>
+    )
+  }
+}
+
+class RecipeList extends React.Component{
+  render(){
+    console.log(this.props);
+    var recipeList = this.props.recipeList.toJSON();
+    console.log(recipeList);
+    var displayList = recipeList.map(function(item, index){
+      return (
+        <li key={index}>
+          {item.name}
+          <button className="btn">
+            Select Recipe
+          </button>
+        </li>
+      )
+    });
+    return(
+      <div>
+        RecipeList PlaceHolder
+        {displayList}
+      </div>
     )
   }
 }
@@ -46,7 +84,7 @@ class RecipeCalculator extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className="recipe-calculator">
         <div>
           Makes
           <input onChange={this.props.handleServings} value={this.props.servingSize} />
@@ -98,6 +136,26 @@ class IngredientTable extends React.Component{
     return(
       <div>
         {displayList}
+      </div>
+    )
+  }
+}
+
+class ToggleMode extends React.Component{
+  render(){
+    return(
+      <button className ="btn" onClick={this.props.toggleMode}>
+        Add Another Recipe
+      </button>
+    )
+  }
+}
+
+class AddRecipe extends React.Component{
+  render(){
+    return(
+      <div className="add-recipe">
+        Add Recipe Placeholder
       </div>
     )
   }

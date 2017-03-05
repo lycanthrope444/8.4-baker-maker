@@ -19,6 +19,10 @@ var Recipe = Backbone.Model.extend({
   idAttribute:'objectId'
 });
 
+var RecipeCollection = Backbone.Collection.extend({
+  model: Recipe
+});
+
 //User info - almost completely lifted from the 8.4 Coffee Demo
 var User = Backbone.Model.extend({
   idAttribute:'objectId',
@@ -75,7 +79,15 @@ exampleIngredientCollection.add(milk);
 exampleIngredientCollection.add(bread);
 exampleIngredientCollection.add(eggs);
 
+var anotherExampleIng = new IngredientCollection();
+anotherExampleIng.add(eggs);
+
 var exampleRecipe = new Recipe({name: 'french toast', servingSize: 4, ingredients: exampleIngredientCollection});
+var anotherExample = new Recipe({name: 'scrambled eggs', servingSize: 1, ingredient: anotherExampleIng});
+
+var exampleRecipeCollection = new RecipeCollection();
+exampleRecipeCollection.add(exampleRecipe);
+exampleRecipeCollection.add(anotherExample);
 //
 // End of demo Data
 
@@ -85,5 +97,6 @@ module.exports = {
   IngredientCollection:IngredientCollection,
   Recipe:Recipe,
   User: User,
-  exampleRecipe: exampleRecipe
+  exampleRecipe: exampleRecipe,
+  exampleRecipeCollection: exampleRecipeCollection
 };

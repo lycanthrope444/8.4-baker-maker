@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var React = require('react');
 
 var Container = require('./layout.jsx').Container;
@@ -10,17 +11,15 @@ class AddContainer extends React.Component{
     super(props);
 
     var newRecipe = new models.Recipe();
-    var recipeTitle = "";
-    var exampleRecipeCollection = exampleRecipeCollection;
     var storageList = new models.IngredientCollection();
 
-    this.handleRecipeTitle = this.handleRecipeTitle.bind(this);
+    this.addTitle = this.addTitle.bind(this);
 
     this.state = {
       newRecipe:newRecipe,
       storageList:storageList,
       exampleRecipeCollection:exampleRecipeCollection,
-      recipeTitle:recipeTitle
+      recipeTitle:newRecipe.get('name')
     }
   }
   addIngredient(ingredient){
@@ -30,16 +29,27 @@ class AddContainer extends React.Component{
     e.preventDefault();
     console.log('triggered');
   }
-  handleRecipeTitle(e){
-    this.setState({recipeTitle: e.target.value});
+  // handleRecipeTitle(e){
+  //   this.setState({recipeTitle: e.target.value});
+  // }
+  addTitle(title){
+    var recipe = this.state.newRecipe;
+    recipe.addName(title);
+    this.setState({
+      newRecipe:recipe,
+      recipeTitle:recipe.get('name')
+    })
+    console.log(this.state);
   }
   render(){
+    console.log(this.state);
     return(
       <Container>
-        <AddDisplay />
         <AddRecipe addRecipe={this.addRecipe}
-          handleRecipeTitle = {this.handleRecipeTitle}
+          addTitle = {this.addTitle}
           addIngredient={this.addIngredient}/>
+        <AddDisplay recipeTitle={this.state.recipeTitle}/>
+        <AddRecipeList storageList={this.state.storageList}/>
       </Container>
     )
   }
@@ -51,7 +61,7 @@ class AddRecipe extends React.Component{
   }
   render(){
     return(
-      <div className="add-recipe">
+      <div className="col-sm-8 add-recipe">
         <form>
           <div className="form-group">
 
@@ -60,13 +70,13 @@ class AddRecipe extends React.Component{
             </label>
             <input id="recipe-title" className="form-control"
               placeholder="Recipe Title"
-              onChange={this.props.handleRecipeTitle}
             />
             <button className="btn"
               onClick={
               (e)=>{
+                var $title = $('#recipe-title').val();
                 e.preventDefault();
-
+                this.props.addTitle($title);
               }}>
               Add/Edit Title
             </button>
@@ -104,14 +114,32 @@ class AddRecipe extends React.Component{
 }
 
 class AddDisplay extends React.Component{
+  constructor(props){
+    super(props);
+  }
   render(){
     return(
-      <div>
-        PlaceHolder
+      <div className="col-sm-4">
+        <h2>Current Recipe:{this.props.recipeTitle}</h2>
       </div>
     )
   }
 }
+
+class AddRecipeList extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+
+    return(
+      <ul className ="col-sm-4">
+        Recipe List Placeholder
+      </ul>
+    )
+  }
+}
+
 module.exports = {
   AddContainer
 };

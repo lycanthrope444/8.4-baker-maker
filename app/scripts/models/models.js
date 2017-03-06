@@ -22,7 +22,7 @@ var Recipe = Backbone.Model.extend({
     this.ingredients.add(ingred);
   },
   addName: function(entry){
-    this.name = entry;
+    this.set({"name" : entry});
   }
 });
 

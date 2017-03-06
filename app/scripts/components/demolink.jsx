@@ -2,15 +2,17 @@ var React = require('react');
 
 var Container = require('./layout.jsx').Container;
 
-class Public extends React.Component{
-  render(){
-    return(
-      <Container>
-        Public Place Holder
-      </Container>
-    )
-  }
-}
+// Deprecated
+
+// class Public extends React.Component{
+//   render(){
+//     return(
+//       <Container>
+//         Public Place Holder
+//       </Container>
+//     )
+//   }
+// }
 
 class Popular extends React.Component{
   render(){
@@ -44,7 +46,7 @@ class Pantry extends React.Component{
 
 
 module.exports ={
-  Public,
+  // Public,
   Popular,
   Favorite,
   Pantry

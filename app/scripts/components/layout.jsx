@@ -58,12 +58,12 @@ class SideBar extends React.Component{
         </a>
         <a href="#public">
           <div>
-            Public Recipes
+            All Recipes
           </div>
         </a>
         <a href="#popular">
           <div>
-            Popular Recipes
+            Add a Recipe
           </div>
         </a>
         <a href="#favorite">

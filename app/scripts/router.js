@@ -5,7 +5,7 @@ var ReactDOM = require('react-dom');
 var parse = require('./setup');
 var login = require('./components/login.jsx').Login;
 var myRecipes = require('./components/myrecipes.jsx').MyRecipes;
-var Public = require('./components/demolink.jsx').Public;
+var Public = require('./components/selectrecipe.jsx').RecipeContainer;
 var demolinks = require('./components/demolink.jsx');
 
 var AppRouter = Backbone.Router.extend({

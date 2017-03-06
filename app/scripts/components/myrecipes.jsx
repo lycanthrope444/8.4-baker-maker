@@ -13,13 +13,11 @@ class MyRecipes extends React.Component{
     // console.log(this);
     this.adjustRecipe = this.adjustRecipe.bind(this);
     this.handleServings = this.handleServings.bind(this);
-    this.selectRecipe = this.selectRecipe.bind(this);
 
     //To store Ingredients for new recipes
     var storageList = new models.IngredientCollection();
 
     this.state={
-      recipeList: exampleRecipeCollection,
       recipe: exampleRecipe,
       servingSize: serve,
       storageList: storageList
@@ -56,10 +54,6 @@ class MyRecipes extends React.Component{
     // console.log(this.state);
     return(
       <Container>
-        <RecipeList
-          recipeList={this.state.recipeList}
-          selectRecipe={this.selectRecipe}
-        />
         <RecipeCalculator
           adjustRecipe={this.adjustRecipe}
           exampleRecipe={this.state.recipe}
@@ -71,35 +65,6 @@ class MyRecipes extends React.Component{
           addIngredient={this.addIngredient}
         />
       </Container>
-    )
-  }
-}
-
-class RecipeList extends React.Component{
-  render(){
-    console.log(this.props);
-    function selectRecipe(item){
-      // console.log('clicked');
-      // this.props.selectRecipe(item);
-    }
-    var self = this;
-    var recipeList = this.props.recipeList.toJSON();
-    var displayList = recipeList.map(function(item, index){
-      return (
-        <li key={index}>
-          {item.name}
-          <button className="btn"
-            onClick={selectRecipe(item)}>
-            Select Recipe
-          </button>
-        </li>
-      )
-    });
-    return(
-      <div className="recipe-list">
-        RecipeList PlaceHolder
-        {displayList}
-      </div>
     )
   }
 }

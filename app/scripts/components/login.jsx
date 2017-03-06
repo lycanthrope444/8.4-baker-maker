@@ -13,7 +13,7 @@ class Login extends React.Component{
     this.handlePasswordLogin = this.handlePasswordLogin.bind(this);
 
     this.state = {
-      user: "username",
+      username: "username",
       password: "password"
     }
   }

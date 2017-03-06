@@ -53,7 +53,7 @@ class SideBar extends React.Component{
       <div className ="sidebar">
         <a href="#myrecipes">
           <div>
-            My Recipes
+            Batch Calculator
           </div>
         </a>
         <a href="#public">

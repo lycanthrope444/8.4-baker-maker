@@ -14,13 +14,9 @@ class MyRecipes extends React.Component{
     this.adjustRecipe = this.adjustRecipe.bind(this);
     this.handleServings = this.handleServings.bind(this);
 
-    //To store Ingredients for new recipes
-    var storageList = new models.IngredientCollection();
-
     this.state={
       recipe: exampleRecipe,
       servingSize: serve,
-      storageList: storageList
     }
   }
   adjustRecipe(){
@@ -30,25 +26,8 @@ class MyRecipes extends React.Component{
     e.preventDefault();
     this.setState({servingSize: e.target.value});
   }
-  toggleMode(){
-    var calc = $('.recipe-calculator');
-    calc.slideToggle();
-
-    var add = $('.add-recipe');
-    add.slideToggle();
-
-    var list = $('.recipe-list');
-    list.slideToggle();
-  }
-  addRecipe(e){
-    e.preventDefault();
-    console.log('triggered');
-  }
   selectRecipe(item){
     console.log(this, item);
-  }
-  addIngredient(ingredient){
-
   }
   render(){
     // console.log(this.state);
@@ -60,10 +39,7 @@ class MyRecipes extends React.Component{
           handleServings={this.handleServings}
           servingSize = {this.state.servingSize}
         />
-        <ToggleMode toggleMode={this.toggleMode}/>
-        <AddRecipe addRecipe={this.addRecipe}
-          addIngredient={this.addIngredient}
-        />
+
       </Container>
     )
   }
@@ -134,55 +110,19 @@ class IngredientTable extends React.Component{
   }
 }
 
-class ToggleMode extends React.Component{
-  render(){
-    return(
-      <button className ="btn" onClick={this.props.toggleMode}>
-        Add Another Recipe
-      </button>
-    )
-  }
-}
+// Deprecated
 
-class AddRecipe extends React.Component{
-  constructor(props){
-    super(props);
-  }
-  render(){
-    return(
-      <div className="add-recipe">
-        <form>
-          <div className="form-group">
-            <label htmlFor="recipe-title">
-              Recipe Title
-            </label>
-            <input id="recipe-title" className="form-control" placeholder="Recipe Title" />
-            <label htmlFor="ingredient">
-              Ingredients
-            </label>
-            <input className="form-control" id="ingredient"
-              placeholder="Ingredient Name" />
-            <button className="btn"
-              onClick={
-                (e)=>{
-                  e.preventDefault();
-                  this.props.addIngredient();
-                }
-              }>
-              Add Ingredient
-            </button>
-            <button className="btn"
-              onClick={
-                this.props.addRecipe
-              }>
-              Finish Recipe
-            </button>
-          </div>
-        </form>
-      </div>
-    )
-  }
-}
+// class ToggleMode extends React.Component{
+//   render(){
+//     return(
+//       <button className ="btn" onClick={this.props.toggleMode}>
+//         Add Another Recipe
+//       </button>
+//     )
+//   }
+// }
+
+
 
 module.exports ={
   MyRecipes

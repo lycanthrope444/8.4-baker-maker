@@ -5,7 +5,7 @@ var ReactDOM = require('react-dom');
 var parse = require('./setup');
 var login = require('./components/login.jsx').Login;
 var myRecipes = require('./components/myrecipes.jsx').MyRecipes;
-var Public = require('./components/selectrecipe.jsx').RecipeContainer;
+var allRecipe = require('./components/selectrecipe.jsx').RecipeContainer;
 var addRecipe = require('./components/addrecipe.jsx').AddContainer;
 var demolinks = require('./components/demolink.jsx');
 
@@ -18,7 +18,7 @@ var AppRouter = Backbone.Router.extend({
   routes:{
     '':'login',
     'myrecipes':'myRecipes',
-    'public':'publicRecipes',
+    'allRecipe':'allRecipe',
     'popular':'popularRecipes',
     'favorite':'favoriteRecipes',
     'pantry':'pantry'
@@ -35,9 +35,9 @@ var AppRouter = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  publicRecipes:function(){
+  allRecipe:function(){
     ReactDOM.render(
-      React.createElement(Public),
+      React.createElement(allRecipe),
       document.getElementById('app')
     );
   },

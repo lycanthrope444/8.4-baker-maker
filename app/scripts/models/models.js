@@ -14,13 +14,23 @@ var IngredientCollection = Backbone.Collection.extend({
 
 var Recipe = Backbone.Model.extend({
   defaults:{
+    name : '',
     ingredients: new IngredientCollection()
   },
-  idAttribute:'objectId'
+  idAttribute:'objectId',
+  addRecipe: function(ingred){
+    this.ingredients.add(ingred);
+  },
+  addName: function(entry){
+    this.name = entry;
+  }
 });
 
 var RecipeCollection = Backbone.Collection.extend({
-  model: Recipe
+  model: Recipe,
+  addRecipeToColl: function(recipe){
+    this.add(recipe);
+  }
 });
 
 //User info - almost completely lifted from the 8.4 Coffee Demo

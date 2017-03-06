@@ -51,14 +51,14 @@ class SideBar extends React.Component{
   render(){
     return (
       <div className ="sidebar">
+        <a href="#allRecipe">
+          <div>
+            All Recipes
+          </div>
+        </a>
         <a href="#myrecipes">
           <div>
             Batch Calculator
-          </div>
-        </a>
-        <a href="#public">
-          <div>
-            All Recipes
           </div>
         </a>
         <a href="#popular">

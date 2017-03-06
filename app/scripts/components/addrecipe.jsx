@@ -9,6 +9,7 @@ class AddContainer extends React.Component{
   constructor(props){
     super(props);
 
+    var newRecipe = new models.Recipe();
     var recipeTitle = "";
     var exampleRecipeCollection = exampleRecipeCollection;
     var storageList = new models.IngredientCollection();
@@ -16,6 +17,7 @@ class AddContainer extends React.Component{
     this.handleRecipeTitle = this.handleRecipeTitle.bind(this);
 
     this.state = {
+      newRecipe:newRecipe,
       storageList:storageList,
       exampleRecipeCollection:exampleRecipeCollection,
       recipeTitle:recipeTitle
@@ -34,6 +36,7 @@ class AddContainer extends React.Component{
   render(){
     return(
       <Container>
+        <AddDisplay />
         <AddRecipe addRecipe={this.addRecipe}
           handleRecipeTitle = {this.handleRecipeTitle}
           addIngredient={this.addIngredient}/>
@@ -59,7 +62,15 @@ class AddRecipe extends React.Component{
               placeholder="Recipe Title"
               onChange={this.props.handleRecipeTitle}
             />
+            <button className="btn"
+              onClick={
+              (e)=>{
+                e.preventDefault();
 
+              }}>
+              Add/Edit Title
+            </button>
+            <br></br>
             <label htmlFor="ingredient">
               Ingredients
             </label>
@@ -78,6 +89,7 @@ class AddRecipe extends React.Component{
               }>
               Add Ingredient
             </button>
+            <br></br>
             <button className="btn"
               onClick={
                 this.props.addRecipe
@@ -91,6 +103,15 @@ class AddRecipe extends React.Component{
   }
 }
 
+class AddDisplay extends React.Component{
+  render(){
+    return(
+      <div>
+        PlaceHolder
+      </div>
+    )
+  }
+}
 module.exports = {
   AddContainer
 };

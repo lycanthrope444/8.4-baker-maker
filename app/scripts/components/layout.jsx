@@ -41,7 +41,7 @@ class OptionPanel extends React.Component{
   render(){
     return (
       <div className="option-panel">
-        Option Panel
+        <a href="#">Login/SignUp</a>
       </div>
     )
   }

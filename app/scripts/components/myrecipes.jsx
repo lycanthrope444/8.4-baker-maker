@@ -58,16 +58,6 @@ class RecipeCalculator extends React.Component{
           Makes
           <input onChange={this.props.handleServings} value={this.props.servingSize} />
           servings
-          <button
-            className = "btn"
-            onClick={
-              (e)=>{
-                e.preventDefault();
-                this.props.adjustRecipe();
-              }
-            }>
-            Adjust Recipe
-          </button>
         </div>
         <div>
           <IngredientTable

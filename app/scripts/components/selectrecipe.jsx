@@ -16,10 +16,7 @@ class RecipeContainer extends React.Component{
   render(){
     return (
       <Container>
-        <RecipeList
-          recipeList={this.state.recipeList}
-          selectRecipe={this.selectRecipe}
-        />
+        <RecipeList recipeList={this.state.recipeList}/>
       </Container>
     )
   }
@@ -29,16 +26,12 @@ class RecipeContainer extends React.Component{
 class RecipeList extends React.Component{
   render(){
     console.log(this.props);
-    function selectRecipe(item){
-      // console.log('clicked');
-      // this.props.selectRecipe(item);
-    }
-    var self = this;
     var recipeList = this.props.recipeList.toJSON();
     var displayList = recipeList.map(function(item, index){
       return (
+
         <li key={index}>
-          <a href="#">
+          <a href = "#">
             {item.name}
           </a>
         </li>

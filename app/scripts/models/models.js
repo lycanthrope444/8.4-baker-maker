@@ -9,7 +9,11 @@ var Ingredient = Backbone.Model.extend({
 });
 
 var IngredientCollection = Backbone.Collection.extend({
-  model: Ingredient
+  model: Ingredient,
+  addIngredient: function(ingredient){
+    this.add(ingredient);
+    console.log(this);
+  }
 });
 
 var Recipe = Backbone.Model.extend({
@@ -18,8 +22,11 @@ var Recipe = Backbone.Model.extend({
     ingredients: new IngredientCollection()
   },
   idAttribute:'objectId',
-  addRecipe: function(ingred){
-    this.ingredients.add(ingred);
+  addIngredient: function(ingred){
+    console.log(ingred);
+    var ingredients = this.get('ingredients');
+    ingredients.add(ingred);
+    this.set({'ingredients':ingredients});
   },
   addName: function(entry){
     this.set({"name" : entry});
@@ -29,6 +36,7 @@ var Recipe = Backbone.Model.extend({
 var RecipeCollection = Backbone.Collection.extend({
   model: Recipe,
   addRecipeToColl: function(recipe){
+    console.log(this);
     this.add(recipe);
   }
 });
